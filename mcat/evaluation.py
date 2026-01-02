@@ -2,8 +2,25 @@ import torch
 import torchvision
 from torchvision import datasets, transforms
 
+
+def calculates_accuracy(y_true, y_pred):
+  """
+  calculates the accuracy of given data
+
+  :param y_true: the target label tensor
+  :param y_pred: the prediction of the model
+  :return: the accuracy in %
+  """
+  correct = torch.eq(y_true, y_pred).sum().item()
+  acc = (correct / len(y_true)) * 100
+  return acc
+
+
+#TODO-- Fix the function XD
 def predict_on_custom_data(img_path: str, model: torch.nn.Module, device, size: tuple):
   """
+  NOTE - this function does NOT work!
+
   Loads in a custom image and predicts on it
 
   :param img_path: path of the images the model will predict on
